@@ -8,7 +8,7 @@ Sample usage:
 
 This will SET `caddy:test => "1234"` and `caddy:foo => "bar"` in Redis.
 
-**WARNING:** This plugin is for testing purposes only. Do not use in production! Seriously, this plugin will write anything given by anyone to the specified Redis database. You'll' want to implement some kind of authentication at the very least.
+**WARNING:** This plugin is for testing purposes only. Do not use in production! Seriously, this plugin will write anything given by anyone to the specified Redis database. You'll want to implement some kind of authentication at the very least.
 
 ## Syntax
 
