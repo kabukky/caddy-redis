@@ -1,6 +1,6 @@
 # caddy-redis
 
-This package is a plugin for the [Caddy](https://caddyserver.com) webserver. It stores and retrieves user data in and from Redis.
+This package is a plugin for the [Caddy](https://caddyserver.com) webserver. Its purpose is to store and retrieve user data in and from Redis.
 
 If you HTTP POST a valid JSON payload to `/redis/<key>`, it will put it into into a Redis database under the specified key.
 
