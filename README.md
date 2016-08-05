@@ -1,8 +1,8 @@
 # caddy-redis
 
-This package is a plugin for the [Caddy](https://caddyserver.com) webserver. If you POST valid JSON to `/redis/<key>`, it will put it into into a Redis database.
+This package is a plugin for the [Caddy](https://caddyserver.com) webserver. If you HTTP POST valid JSON to `/redis/<key>`, it will put it into into a Redis database under the specified key.
 
-Similarly, you do a GET on `/redis/<key>`, it will return the previously stored data. If you specify a `Accept-Encoding` header of `application/xml` for the GET request, it will return the data as XML, otherwise JSON.
+Similarly, if you do a HTTP GET on `/redis/<key>`, it will return the previously stored data. If you specify a `Accept-Encoding` header of `application/xml`, it will return the data as XML, otherwise as JSON.
 
 Sample usage: 
 
