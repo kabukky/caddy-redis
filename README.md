@@ -1,6 +1,6 @@
 # caddy-redis
 
-This package is a plugin for the [Caddy](https://caddyserver.com) webserver. It will write any field-value pair specified in the query parameters of a HTTP request to `/redis` to a Redis database.
+This package is a plugin for the [Caddy](https://caddyserver.com) webserver. It will write any field-value pair specified in the query parameters of a HTTP request to `/redis` into a Redis database.
 
 Sample usage: 
 
