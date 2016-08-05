@@ -14,7 +14,7 @@ This will SET `caddy:test => "1234"` and `caddy:foo => "bar"` in Redis.
 
 ```
 redis  {
-	server localhost:6379 # NOTE: If not specified, ":6379" is used as the Redis server (default).
-	password foobar # NOTE: If not specified, Redis is used without authentication (default).
+	server localhost:6379 	# NOTE: If not specified, ":6379" is used as the Redis server (default).
+	password foobar 		# NOTE: If not specified, Redis is used without authentication (default).
 }
 ```
