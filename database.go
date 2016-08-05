@@ -7,7 +7,10 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
-var pool *redis.Pool
+var (
+	pool        *redis.Pool
+	redisPrefix = "caddy:"
+)
 
 func newPool(server string, password string) *redis.Pool {
 	return &redis.Pool{
@@ -37,9 +40,20 @@ func set(key string, value string) {
 	conn := pool.Get()
 	defer conn.Close()
 	fmt.Println(LOG_TAG, "Setting in database: key:", key, "value:", value)
-	reply, err := conn.Do("SET", "caddy:"+key, value)
+	reply, err := conn.Do("SET", redisPrefix+key, value)
 	if err != nil {
 		fmt.Println(LOG_TAG, "Error while setting in Redis:", err)
 	}
 	fmt.Println(LOG_TAG, "Result:", reply)
+}
+
+func get(key string) ([]byte, error) {
+	conn := pool.Get()
+	defer conn.Close()
+	fmt.Println(LOG_TAG, "Getting from database: key:", key)
+	value, err := redis.Bytes(conn.Do("GET", redisPrefix+key))
+	if err != nil {
+		return []byte{}, err
+	}
+	return value, nil
 }
