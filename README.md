@@ -10,11 +10,11 @@ Sample usage:
 
 This will SET `caddy:test => "{"key":"val"}"` in Redis.
 
-`curl -H "Accept-Encoding: application/json" http://localhost:2020/redis/test`
+`curl -H "Accept-Encoding: application/json" http://localhost:2015/redis/test`
 
 This will GET the previously stored data for the key `test` as JSON.
 
-`curl -H "Accept-Encoding: application/xml" http://localhost:2020/redis/test`
+`curl -H "Accept-Encoding: application/xml" http://localhost:2015/redis/test`
 
 This will GET the previously stored data for the key `test` as XML.
 
