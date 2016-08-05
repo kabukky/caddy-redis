@@ -2,7 +2,7 @@
 
 This package is a plugin for the [Caddy](https://caddyserver.com) webserver. Its purpose is to store and retrieve user data in and from Redis.
 
-If you HTTP POST a valid JSON payload to `/redis/<key>`, it will put it into into a Redis database under the specified key.
+If you HTTP POST a valid JSON payload to `/redis/<key>`, it will put it into a Redis database under the specified key.
 
 Similarly, if you do a HTTP GET on `/redis/<key>`, it will return the previously stored data. If you specify a `Accept-Encoding` header of `application/xml`, it will return the data as XML, otherwise as JSON.
 
