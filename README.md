@@ -14,7 +14,7 @@ Similarly, if you do a HTTP GET on `/redis/<key>`, it will return the previously
 
 `curl -X POST -H "Content-Type: application/json" -d '{"key":"val"}' http://localhost:2015/redis/test`
 
-This will SET `caddy:test => "{"key":"val"}"` in Redis.
+This will SET `test => "{"key":"val"}"` in Redis (actually, the key will be `caddy:test` in Redis to keep things somewhat organized).
 
 ### Retrieving data
 
