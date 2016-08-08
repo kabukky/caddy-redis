@@ -39,18 +39,18 @@ func newPool(server string, password string) *redis.Pool {
 func set(key string, value string) {
 	conn := pool.Get()
 	defer conn.Close()
-	fmt.Println(LOG_TAG, "Setting in database: key:", key, "value:", value)
+	fmt.Println(LogTag, "Setting in database: key:", key, "value:", value)
 	reply, err := conn.Do("SET", redisPrefix+key, value)
 	if err != nil {
-		fmt.Println(LOG_TAG, "Error while setting in Redis:", err)
+		fmt.Println(LogTag, "Error while setting in Redis:", err)
 	}
-	fmt.Println(LOG_TAG, "Result:", reply)
+	fmt.Println(LogTag, "Result:", reply)
 }
 
 func get(key string) ([]byte, error) {
 	conn := pool.Get()
 	defer conn.Close()
-	fmt.Println(LOG_TAG, "Getting from database: key:", key)
+	fmt.Println(LogTag, "Getting from database: key:", key)
 	value, err := redis.Bytes(conn.Do("GET", redisPrefix+key))
 	if err != nil {
 		return []byte{}, err

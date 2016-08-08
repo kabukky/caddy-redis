@@ -44,13 +44,13 @@ func parse(c *caddy.Controller) (string, string, error) {
 					return server, password, c.ArgErr()
 				}
 				server = c.Val()
-				fmt.Println(LOG_TAG, "Found server config:", server)
+				fmt.Println(LogTag, "Found server config:", server)
 			case "password":
 				if !c.NextArg() {
 					return server, password, c.ArgErr()
 				}
 				password = c.Val()
-				fmt.Println(LOG_TAG, "Found password config:", password)
+				fmt.Println(LogTag, "Found password config:", password)
 			}
 		}
 	}

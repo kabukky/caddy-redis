@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	LOG_TAG      = "caddy-redis"
+	LogTag       = "caddy-redis"
 	apiPath      = "/redis/"
 	apiPathRegex = regexp.MustCompile(apiPath + "(.+[^/])/?")
 )
@@ -37,15 +37,15 @@ func (redis Redis) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error
 			json, err := simplejson.NewFromReader(r.Body)
 			if err != nil {
 				errorMessage := "Error while decoding json from POST: " + err.Error()
-				fmt.Println(LOG_TAG, errorMessage)
+				fmt.Println(LogTag, errorMessage)
 				serveJSONError(w, errorMessage)
 				return 0, nil
 			}
-			fmt.Println(LOG_TAG, "Got json from POST:", json)
+			fmt.Println(LogTag, "Got json from POST:", json)
 			jsonEncoded, err := json.Encode()
 			if err != nil {
 				errorMessage := "Error while encoding json from POST: " + err.Error()
-				fmt.Println(LOG_TAG, errorMessage)
+				fmt.Println(LogTag, errorMessage)
 				serveJSONError(w, errorMessage)
 				return 0, nil
 			}
@@ -57,7 +57,7 @@ func (redis Redis) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error
 			value, err := get(key)
 			if err != nil {
 				errorMessage := "Error while getting value from Redis: " + err.Error()
-				fmt.Println(LOG_TAG, errorMessage)
+				fmt.Println(LogTag, errorMessage)
 				serveJSONError(w, errorMessage)
 				return 0, nil
 			}
@@ -65,19 +65,17 @@ func (redis Redis) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error
 			json, err := simplejson.NewJson(value)
 			if err != nil {
 				errorMessage := "Error while unmarshalling json from Redis: " + err.Error()
-				fmt.Println(LOG_TAG, errorMessage)
+				fmt.Println(LogTag, errorMessage)
 				serveJSONError(w, errorMessage)
 				return 0, nil
 			}
 			// Check what type of encoding we need to serve
-			fmt.Println("Header:", r.Header)
 			if strings.Contains(r.Header.Get("Accept-Encoding"), "xml") {
-				fmt.Println("WANTS XML!")
 				// Create XML
 				jsonMap, err := json.Map()
 				if err != nil {
 					errorMessage := "Error while converting json to Golang map: " + err.Error()
-					fmt.Println(LOG_TAG, errorMessage)
+					fmt.Println(LogTag, errorMessage)
 					serveXMLError(w, errorMessage)
 					return 0, nil
 				}
@@ -85,7 +83,7 @@ func (redis Redis) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error
 				xmlValue, err := xmlMap.Xml()
 				if err != nil {
 					errorMessage := "Error while unmarshalling xml: " + err.Error()
-					fmt.Println(LOG_TAG, errorMessage)
+					fmt.Println(LogTag, errorMessage)
 					serveXMLError(w, errorMessage)
 					return 0, nil
 				}
