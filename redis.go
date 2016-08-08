@@ -87,7 +87,6 @@ func (redis Redis) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error
 					serveXMLError(w, errorMessage)
 					return 0, nil
 				}
-				fmt.Println("XML Payload:", xmlValue)
 				serveXML(w, xmlValue)
 			} else {
 				serveJSON(w, []byte(value))
