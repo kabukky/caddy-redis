@@ -8,7 +8,7 @@ import (
 
 	"github.com/bitly/go-simplejson"
 	"github.com/clbanning/mxj"
-	"github.com/mholt/caddy/caddyhttp/httpserver"
+	"github.com/caddyserver/caddy/caddyhttp/httpserver"
 )
 
 var (
